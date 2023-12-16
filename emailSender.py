@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 smtp_host = "smtp.strato.de"
 smtp_port = 465
 email_user = "kontakt@lindnerit.com"
-email_password = "Lebenisthart420$"
+email_password = "x"
 emails = [
     "poststelle@ag-lb.berlin.de",
     "kontakt@markus-lindnerit.de",
