@@ -7,39 +7,48 @@ processEntry(plz, entry) {
     Sleep 2300
     Send "{tab 7}"
 
-    ; Titel, Geldbetrag, Beschreibung und Bilder senden
+    ; Titel
     Send entry[1]
     Sleep 1000
     Send "{tab}"
     Sleep 2000
     MouseClick "left", 600, 650
 
+    ; geldsumme
     Send entry[2]
-
     Sleep 1000
     MouseClick "left", 900, 650
     Send "{tab}"
     Sleep 1000
     Send "{space}{Down}{enter}{tab}"
-    MouseClick "left", 620, 750
+
+    ; richtig beitrag reinschreiben
+    MouseClick "left", 650, 750
+    Sleep 500
     Send entry[3]
-    Sleep 2300
-    Send "{tab}"
+    Sleep 1000
+    
+    
 
     ; Bilder durchgehen und klicken
     for index, value in entry[4] {
         for _, path in value {
-            MouseClick "left", 650, 970
+            Sleep 2000
+            MouseClick "left", 660, 940
             Sleep 1000
             MouseClick "left", 420, 750
             Send path
             Send "{enter}"
-            Sleep 2000
         }
     }
-
     ; PLZ und Abschluss  
-    Send "{tab}plz{tab}{enter}"
+
+    Sleep 2000
+    Send "{tab}"
+    Send plz
+    Send "{tab 13}{enter}"
+    Sleep 5000
+    Send "{tab 6}{enter}"
 }
 
 ; Funktion, die über die PLZ und Einträge loopt und pro Eintrag die 'processEntry'-Funktion aufruft
@@ -72,11 +81,10 @@ handleEntries(plzs, entries) {
         [
             "Nachhilfe Informatik", "250", fileContent, [
                 ["C:\Users\marku\Desktop\hackplayground\gameOfLife\docu\codeOfInternet.jpg"],
-                ["C:\Users\marku\Desktop\hackplayground\gameOfLife\docu\codeOfInternet.jpg"]
+                ["C:\Users\marku\Desktop\hackplayground\gameOfLife\docu\codeOfLife.jpg"]
             ]
         ]
     ]
-
     ; Rufe die Funktion auf, um über PLZ und Einträge zu iterieren und 'processEntry' aufzurufen
     handleEntries(plzs, entries)
 }
